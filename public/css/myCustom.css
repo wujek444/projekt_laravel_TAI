@@ -1,0 +1,220 @@
+.navbar-text > a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    padding-top: 70px;
+    padding-bottom: 100px;
+}
+
+p {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+}
+
+.navbar-default {
+    background-color: #2C3E50;
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.navbar-default .navbar-brand {
+    color: #FFFFFF;
+}
+
+.navbar-default .navbar-brand:hover,
+.navdar-default .navbar-brand:focus{
+    color: #18BC9C;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus{
+    color: #FFFFFF;
+    background-color: #1A242F;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #18BC9C;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus{
+    background-color: #1A242F;
+    color: #FFFFFF;
+}
+
+.btn-primary {
+    background-color: #2C3E50;
+    border-color: #2C3E50;
+    color: #FFFFFF;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active
+.open .dropdown-toggle .btn-primary {
+    color: #FFFFFF;
+    background-color: #1E2A36;
+    border-color: #161F29;
+}
+
+
+.btn-success {
+    background-color: #18BC9C;
+    border-color: #18BC9C;
+    color: #FFFFFF;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active,
+.btn-success.active
+.open .dropdown-toggle .btn-success {
+    color: #FFFFFF;
+    background-color: #13987E;
+    border-color: #13987E;
+}
+
+.btn-default {
+    background-color: #95A5A6;
+    border-color: #95A5A6;
+    color: #FFFFFF;
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active
+.open .dropdown-toggle .btn-default {
+    color: #FFFFFF;
+    background-color: #7F9293;
+    border-color: #74898A;
+}
+
+.home-thumb img:hover {
+    transform: scale(1.1);
+}
+
+.thumbnail img {
+    transition: all 0.3s ease 0s;
+    width: 100%;
+}
+
+.thumbnail {
+    overflow: hidden;
+}
+
+.bg-grey {
+    background-color: #f9f9f9;
+}
+
+.galeriaJumbo {
+    background: url("../img/baner.jpg") no-repeat center center;
+
+    background-size: cover;
+}
+
+h1.h1-galeria {
+    color: darkred;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-weight: bold;
+    font-size: 25.0vh;
+}
+
+.hide-bullets {
+    list-style:none;
+    margin-left: -40px;
+    margin-top:20px;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    width: 100%;
+}
+
+.jumboBtn {
+    text-align: right;
+}
+
+.jumboIndex {
+    background: url("../img/jumboBg.jpg") no-repeat center center;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+h1.indexJumboH1 {
+    color: #761c19;
+    font-weight: bold; 
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+p.indexJumboP {
+    color: #FFFFFF;
+    font-style: italic;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.redNavbar {
+    background-color: #761c19;
+}
+
+.blackBody {
+    background-color: #000;
+    color: white;
+}
+
+p.p-galeria {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-weight: bold;
+}
+
+h1.regulaminH1 {
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    font-weight: bold;
+    color: darkred;
+}
+
+*.thumbRegulamin {
+    border: black;
+}
+
+div.modal-content {
+    color: black;
+}
+/*
+Navy Blue: #2C3E50;
+Navy Blue Active: #1A242F;
+Turquoise: #18BC9C;
+White: #FFFFFF;
+
+BTN Primary: #2C3E50
+BTN Primary Hover: #1E2A36;
+BTN Primary Hover Boarder: #161F29;
+
+BTN Success: #18BC9C;
+BTN Success Hover: #13987E;
+BTN Success Hover Boarder: #11866F;
+
+BTN Default: #95A5A6;
+BTN Default Hover: #7F9293;
+BTN Default Hover Background: #74898A;
+*/
