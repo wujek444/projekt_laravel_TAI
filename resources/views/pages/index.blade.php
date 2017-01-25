@@ -10,6 +10,18 @@
                 </div>
             </div>
         </div>
+        <!-- wyświetl wiadomość, gdy użytkownik zostanie wylogowany-->
+        @if ( session()->has('logout_message') )
+            <div class="alert alert-danger alert-danger" style="text-align: center">{{ session()->get('logout_message') }}</div>
+        @endif
+    <!-- wyświetl wiadomość, gdy użytkownik jest już zalogowany-->
+        @if ( session()->has('already_authenticated_message') )
+            <div class="alert alert-warning alert-warning" style="text-align: center">{{ session()->get('already_authenticated_message') }}</div>
+        @endif
+    <!-- wyświetl wiadomość, gdy użytkownik jest już zalogowany-->
+        @if ( session()->has('login_message') )
+            <div class="alert alert-success alert-success" style="text-align: center">{{ session()->get('login_message') }}</div>
+        @endif
 
         <div class="row">
             <div class="col-sm-4"> <!--4/12 cols on the grid -->

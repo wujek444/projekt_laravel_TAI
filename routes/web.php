@@ -24,7 +24,16 @@ Route::group([
 Route::get('/index', 'PagesController@index');
 Route::get('/regulamin', 'PagesController@regulamin');
 Route::get('/galeria', 'PagesController@galeria');
-Route::get('/login', 'LoginController@login');
+//Route::post('/login', function (){
+//    Auth::login();
+//    return Redirect::to('/wypozycz')->with('login_message', 'Zostałeś zalogowany!');
+//});
+Route::get('/logout', function(){
+    Auth::logout();
+    //return view('index')->with('message', 'Zostałeś wylogowany!');
+    return Redirect::to('/index')->with('logout_message', 'Zostałeś wylogowany!');
+});
+
 
 Auth::routes();
 
