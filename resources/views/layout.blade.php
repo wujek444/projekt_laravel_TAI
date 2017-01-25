@@ -51,7 +51,8 @@
                 <li <?php if ($_SERVER['REQUEST_URI']=='/regulamin') echo 'class="active"'; ?>><a href="{{ action('PagesController@regulamin') }}">Regulamin</a></li>
                 <li <?php if ($_SERVER['REQUEST_URI']=='/galeria') echo 'class="active"'; ?>><a href="{{ action('PagesController@galeria') }}">Galeria</a></li>
                 <li><a href="#contact" data-toggle="modal">Kontakt</a></li>
-                <li <?php if ($_SERVER['REQUEST_URI']=='/register') echo 'class="active"'; ?>><a href="{{ action('Auth\RegisterController@register') }}">Zarejestruj się!</a></li>
+                <li <?php if ($_SERVER['REQUEST_URI']=='/register') echo 'class="active"'; ?>><a href="{{ action('Auth\RegisterController@register') }}">Zarejestruj się</a></li>
+                <li><a href="#login" data-toggle="modal">Zaloguj się</a></li>
             </ul>
         </div>
     </div>
@@ -106,6 +107,69 @@
                     <button type="submit" class="btn btn-primary">Wyślij</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="login" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h4>Logowanie</h4></div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                                    {{ csrf_field() }}
+
+                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                        <label for="email" class="col-md-4 control-label">E-Mail</label>
+
+                                        <div class="col-md-6">
+                                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+
+                                            @if ($errors->has('email'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                        <label for="password" class="col-md-4 control-label">Hasło</label>
+
+                                        <div class="col-md-6">
+                                            <input id="password" type="password" class="form-control" name="password" required>
+
+                                            @if ($errors->has('password'))
+                                                <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-4">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}> Zapamiętaj mnie
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-8 col-md-offset-4">
+                                            <button type="submit" class="btn btn-primary">
+                                                Zaloguj
+                                            </button>
+
+                                            <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                                                Zapomniałeś hasła?
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
         </div>
     </div>
 </div>
