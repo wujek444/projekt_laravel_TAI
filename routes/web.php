@@ -19,3 +19,6 @@ Route::get('index', 'PagesController@index');
 Route::get('/regulamin', 'PagesController@regulamin');
 Route::get('/galeria', 'PagesController@galeria');
 Route::get('/wypozycz', 'PagesController@wypozycz');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

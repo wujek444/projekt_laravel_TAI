@@ -51,12 +51,13 @@
                 <li <?php if ($_SERVER['REQUEST_URI']=='/regulamin') echo 'class="active"'; ?>><a href="{{ action('PagesController@regulamin') }}">Regulamin</a></li>
                 <li <?php if ($_SERVER['REQUEST_URI']=='/galeria') echo 'class="active"'; ?>><a href="{{ action('PagesController@galeria') }}">Galeria</a></li>
                 <li><a href="#contact" data-toggle="modal">Kontakt</a></li>
+                <li <?php if ($_SERVER['REQUEST_URI']=='/register') echo 'class="active"'; ?>><a href="{{ action('Auth\RegisterController@register') }}">Zarejestruj się!</a></li>
             </ul>
         </div>
     </div>
 </div>
 
-@yield('content');
+@yield('content')
 
 <!-- FOOTER -->
 <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
