@@ -13,10 +13,19 @@
 
 Route::get('/', 'PagesController@index');
 
-Route::get('index', 'PagesController@index');
+
+Route::group([
+    'middleware' => 'roles',
+    'roles' => ['Admin', 'User']//do tej grupy dostęp mają admin i user
+], function(){
+    Route::get('/wypozycz', 'PagesController@wypozycz');
+});
+
+Route::get('/index', 'PagesController@index');
 Route::get('/regulamin', 'PagesController@regulamin');
 Route::get('/galeria', 'PagesController@galeria');
-Route::get('/wypozycz', 'PagesController@wypozycz');
+Route::get('/login', 'LoginController@login');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

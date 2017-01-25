@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'imie', 'nazwisko', 'email', 'telefon', 'login', 'data-urodzenia', 'password',
+        'imie', 'nazwisko', 'email', 'telefon', 'login', 'data_urodzenia', 'password',
     ];
 
     /**
@@ -26,4 +26,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function roles(){
+        return $this->belongsToMany(Roles::class, 'roles_has_users', 'users_id', 'roles_id')->withTimestamps();
+    }
 }
