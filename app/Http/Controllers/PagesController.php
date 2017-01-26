@@ -28,6 +28,10 @@ class PagesController extends Controller
     public function wypozycz(){
         return view('pages.wypozycz');
     }
+
+    public function dane_uzytkownika(){
+        return view('pages.dane_uzytkownika');
+    }
     /**
      * Show the form for creating a new resource.
      *

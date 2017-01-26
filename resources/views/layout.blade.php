@@ -29,6 +29,11 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link rel="icon" href="favicons/favicon.png">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
 
 </head>
 <body class="blackBody">
@@ -51,9 +56,21 @@
                 <li <?php if ($_SERVER['REQUEST_URI']=='/regulamin') echo 'class="active"'; ?>><a href="{{ action('PagesController@regulamin') }}">Regulamin</a></li>
                 <li <?php if ($_SERVER['REQUEST_URI']=='/galeria') echo 'class="active"'; ?>><a href="{{ action('PagesController@galeria') }}">Galeria</a></li>
                 <li><a href="#contact" data-toggle="modal">Kontakt</a></li>
+                @if(Auth::guest())<!-- jeżeli niezalogowany użytkownik odwiedza stronę-->
                 <li <?php if ($_SERVER['REQUEST_URI']=='/register') echo 'class="active"'; ?>><a href="{{ action('Auth\RegisterController@register') }}">Zarejestruj się</a></li>
                 <li <?php if ($_SERVER['REQUEST_URI']=='/login') echo 'class="active"'; ?>><a href="{{ action('Auth\LoginController@login') }}">Zaloguj się</a></li>
+                @endif
+                @if(Auth::user())
+                    <li class="dropdown" id="accountmenu">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Auth::user()->login }}<b class="caret"></b></a>
+                        <ul class="dropdown-menu" style="background-color: darkred">
+                            <li <?php if ($_SERVER['REQUEST_URI']=='/dane_uzytkownika') echo 'class="active"'; ?>><a href="{{ action('PagesController@dane_uzytkownika') }}" style="color: white">Dane użytkownika</a></li>
+                            <li class="divider"></li>
+                            <li <?php if ($_SERVER['REQUEST_URI']=='/logout') echo 'class="active"'; ?>><a href="{{ action('Auth\LoginController@logout') }}" style="color: white">Wyloguj się</a></li>
+                        </ul>
+                    </li>
 
+                @endif
             </ul>
         </div>
     </div>
@@ -68,9 +85,9 @@
             <p>© 2016 Jakub Wójcik</p>
         </div>
         <div class="navbar-text pull-right">
-            <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
-            <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
-            <a href="#"><i class="fa fa-google-plus fa-2x"></i></a>
+            <a href="https://www.facebook.com/"><i class="fa fa-facebook-square fa-2x"></i></a>
+            <a href="https://www.twitter.com/"><i class="fa fa-twitter fa-2x"></i></a>
+            <a href="https://www.google.com/"><i class="fa fa-google-plus fa-2x"></i></a>
         </div>
     </div>
 </div>
@@ -86,14 +103,25 @@
                     <div class="form-group">
                         <label for="kontakt-imieNazwisko" class="col-sm-2 control-label">Imię i nazwisko:</label>
                         <div class="col-sm-10">
+                            @if(Auth::guest())
                             <input type="text" class="form-control" id="kontakt-imieNazwisko" placeholder="Imię i nazwisko"
                                    pattern="[A-Za-ząęśżźćóńł]{2,10} [A-Za-ząęśżźćóńł]{2,20}" required title="Wprowadź wiadomość w prawidłowym formacie(Imię Nazwisko). Można używać jedynie liter!">
+                            @endif
+                            @if(Auth::user())
+                                   <?php echo '<input type="text" value="'.Auth::user()->imie.' '.Auth::user()->nazwisko.'" disabled class="form-control" id="kontakt-imieNazwisko" placeholder="Imię i nazwisko"
+                                           pattern="[A-Za-ząęśżźćóńł]{2,10} [A-Za-ząęśżźćóńł]{2,20}" required title="Wprowadź wiadomość w prawidłowym formacie(Imię Nazwisko). Można używać jedynie liter!">'?>
+                                @endif
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="kontakt-email" class="col-sm-2 control-label">Email:</label>
                         <div class="col-sm-10">
+                            @if(Auth::guest())
                             <input type="email" class="form-control" id="kontakt-email" placeholder="adres@domena.com">
+                                @endif
+                            @if(Auth::user())
+                                <?php echo '<input type="email" value="'.Auth::user()->email.'" disabled class="form-control" id="kontakt-email" placeholder="adres@domena.com">'?>
+                                @endif
                         </div>
                     </div>
                     <div class="form-group">
@@ -112,7 +140,10 @@
     </div>
 </div>
 
-
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files
+      as needed -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>

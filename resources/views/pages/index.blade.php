@@ -22,6 +22,10 @@
         @if ( session()->has('login_message') )
             <div class="alert alert-success alert-success" style="text-align: center">{{ session()->get('login_message') }}</div>
         @endif
+    <!-- wyświetl wiadomość, gdy użytkownik został zarejestrowany-->
+        @if ( session()->has('registered_message') )
+            <div class="alert alert-success alert-success" style="text-align: center">{{ session()->get('registered_message') }}</div>
+        @endif
 
         <div class="row">
             <div class="col-sm-4"> <!--4/12 cols on the grid -->

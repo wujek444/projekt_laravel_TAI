@@ -19,6 +19,7 @@ Route::group([
     'roles' => ['Admin', 'User']//do tej grupy dostęp mają admin i user
 ], function(){
     Route::get('/wypozycz', 'PagesController@wypozycz');
+    Route::get('/dane_uzytkownika', 'PagesController@dane_uzytkownika');
 });
 
 Route::get('/index', 'PagesController@index');
