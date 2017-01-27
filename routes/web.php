@@ -20,6 +20,8 @@ Route::group([
 ], function(){
     Route::get('/wypozycz', 'PagesController@wypozycz');
     Route::get('/dane_uzytkownika', 'PagesController@dane_uzytkownika');
+    Route::get('/zmiana_danych_uzytkownika', 'PagesController@zmiana_danych_uzytkownika');
+    Route::get('/user_update', 'UserController@update');
 });
 
 Route::get('/index', 'PagesController@index');
@@ -33,6 +35,11 @@ Route::get('/logout', function(){
     Auth::logout();
     //return view('index')->with('message', 'Zostałeś wylogowany!');
     return Redirect::to('/index')->with('logout_message', 'Zostałeś wylogowany!');
+});
+
+
+Route::group(['middleware' => ['web']], function(){
+   Route::resource('blog', 'BlogController');
 });
 
 

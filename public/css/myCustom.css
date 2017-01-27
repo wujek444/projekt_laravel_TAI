@@ -211,7 +211,12 @@ div.modal-content {
     background-image: none;
 }
 
-
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #b92c28;
+}
+.table tbody tr:hover th {
+    background-color: transparent;
+}
 /*
 Navy Blue: #2C3E50;
 Navy Blue Active: #1A242F;

@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Input;
+use Request;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -17,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'imie', 'nazwisko', 'email', 'telefon', 'login', 'data_urodzenia', 'password',
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -52,5 +56,9 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+
+    public function update_user_data(){
+
     }
 }

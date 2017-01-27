@@ -13,7 +13,9 @@
                 <li><strong>Login:</strong> <span style="color: lawngreen">{{ Auth::user()->login }}</span></li>
                 <li><strong>Data urodzenia:</strong> <span style="color: lawngreen">{{ Auth::user()->data_urodzenia }}</span></li>
                 <li><strong>Konto utworzone:</strong> <span style="color: lawngreen">{{ Auth::user()->created_at }}</span></li>
-            </ul>
+            </ul><br/>
+          <?php echo '<a href="/zmiana_danych_uzytkownika" class="btn btn-danger">Edytuj dane użytkownika</a>' ?>
+
         </div>
         {{--<div class="col-sm-4">--}}
             {{--<div class="thumbnail thumbRegulamin">--}}

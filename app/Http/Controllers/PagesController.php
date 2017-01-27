@@ -32,6 +32,9 @@ class PagesController extends Controller
     public function dane_uzytkownika(){
         return view('pages.dane_uzytkownika');
     }
+    public function zmiana_danych_uzytkownika(){
+        return view('pages.zmiana_danych_uzytkownika');
+    }
     /**
      * Show the form for creating a new resource.
      *
