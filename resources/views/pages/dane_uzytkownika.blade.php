@@ -4,6 +4,9 @@
         <div class="page-header">
             <h1 class="regulaminH1">Dane użytkownika</h1>
         </div>
+        @if ( session()->has('user_update_message') )
+            <div class="alert alert-warning alert-success" style="text-align: center">{{ session()->get('user_update_message') }}</div>
+        @endif
         <div class="col-sm-8">
             <ul>
                 <li><strong>Imię:</strong> <span style="color: lawngreen">{{ Auth::user()->imie }}</span></li>
@@ -14,7 +17,7 @@
                 <li><strong>Data urodzenia:</strong> <span style="color: lawngreen">{{ Auth::user()->data_urodzenia }}</span></li>
                 <li><strong>Konto utworzone:</strong> <span style="color: lawngreen">{{ Auth::user()->created_at }}</span></li>
             </ul><br/>
-          <?php echo '<a href="pages.zmiana_danych_uzytkownika" class="btn btn-danger">Edytuj dane użytkownika</a>' ?>
+          <?php echo '<a href="/zmiana_danych_uzytkownika" class="btn btn-danger">Edytuj dane użytkownika</a>' ?>
 
         </div>
         {{--<div class="col-sm-4">--}}

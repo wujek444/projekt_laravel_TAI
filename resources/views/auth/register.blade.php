@@ -14,7 +14,8 @@
                             <label for="imie" class="col-md-4 control-label">Imię</label>
 
                             <div class="col-md-6">
-                                <input id="imie" type="text" placeholder="Imię" class="form-control" name="imie" value="{{ old('imie') }}" required autofocus>
+                                <input id="imie" type="text" placeholder="Imię" class="form-control" name="imie" value="{{ old('imie') }}"
+                                       required pattern="[A-Za-ząęśćżźóńł]{2,10}" title="Można używać jedynie liter!" required autofocus>
 
                                 @if ($errors->has('imie'))
                                     <span class="help-block">
@@ -28,7 +29,8 @@
                             <label for="nazwisko" class="col-md-4 control-label">Nazwisko</label>
 
                             <div class="col-md-6">
-                                <input id="nazwisko" type="text" placeholder="Nazwisko" class="form-control" name="nazwisko" value="{{ old('nazwisko') }}" required autofocus>
+                                <input id="nazwisko" type="text" placeholder="Nazwisko" class="form-control" name="nazwisko" value="{{ old('nazwisko') }}" required autofocus required
+                                       pattern="[A-Za-ząęśćżźóńł]{2,20}" title="Można używać jedynie liter!">
 
                                 @if ($errors->has('nazwisko'))
                                     <span class="help-block">
@@ -56,7 +58,9 @@
                             <label for="imie" class="col-md-4 control-label">Nr telefonu</label>
 
                             <div class="col-md-6">
-                                <input id="telefon" type="text" placeholder="999999999" class="form-control" name="telefon" value="{{ old('telefon') }}" required autofocus>
+                                <input id="telefon" type="tel" placeholder="999999999" class="form-control" name="telefon" value="{{ old('telefon') }}"
+                                       required autofocus required
+                                       pattern="[0-9]{9}" title="Zły format numetu telefonu! Wymagany format: xxxxxxxxx">
 
                                 @if ($errors->has('telefon'))
                                     <span class="help-block">
@@ -119,9 +123,12 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary" style="width: 100%">
+                                <button type="submit" class="btn btn-success" style="width: 25%">
                                     Zarejestruj
                                 </button>
+                                <button type="reset" class="btn btn-danger">Wyczyść formularz</button><br/><br/>
+                                <button type="button" class="btn btn-primary" onclick="store()">Zapisz do localStorage</button>
+                                <button type="button" class="btn btn-default" onclick="load()">Wczytaj z localStorage</button>
                             </div>
                         </div>
                     </form>
@@ -133,5 +140,35 @@
     </div>
 
 </div>
+<script  type="text/javascript">
+    function store(){
+        var imie= document.getElementById("imie");
+        var nazwisko= document.getElementById("nazwisko");
+        var email= document.getElementById("email");
+        var telefon= document.getElementById("telefon");
+        var login= document.getElementById("login");
+        var data_urodzenia= document.getElementById("data_urodzenia");
 
+        localStorage.setItem("imie", imie.value);
+        localStorage.setItem("nazwisko", nazwisko.value);
+        localStorage.setItem("email", email.value);
+        localStorage.setItem("telefon", telefon.value);
+        localStorage.setItem("data_urodzenia", data_urodzenia.value);
+    }
+    function load() {
+        var imie= document.getElementById("imie");
+        var nazwisko= document.getElementById("nazwisko");
+        var email= document.getElementById("email");
+        var telefon= document.getElementById("telefon");
+        var login= document.getElementById("login");
+        var data_urodzenia= document.getElementById("data_urodzenia");
+
+        imie.value = localStorage.getItem("imie");
+        nazwisko.value = localStorage.getItem("nazwisko");
+        email.value = localStorage.getItem("email");
+        telefon.value = localStorage.getItem("telefon");
+        login.value = localStorage.getItem("login");
+        data_urodzenia.value = localStorage.getItem("data_urodzenia");
+    }
+</script>
 @endsection

@@ -13,6 +13,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function zmiana_danych_uzytkownika(){
+        return view('pages.zmiana_danych_uzytkownika');
+    }
+
     public function index()
     {
         //
@@ -36,7 +41,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validation
+        $this->validate($request,[
+            'imie'=> 'required',
+            'nazwisko' => 'required',
+            'email' => 'required',
+            'telefon' => 'required',
+            'login' => 'required',
+            'data_urodzenia' => 'required',
+        ]);
+
+        $user = new user;
+        $user->imie = $request->imie;
+        $user->nazwisko = $request->nazwisko;
+        $user->email = $request->email;
+        $user->telefon = $request->telefon;
+        $user->login = $request->login;
+        $user->data_urodzenia = $request->data_urodzenia;
+        $user->save();
+
+        return view('pages.dane_uzytkownika')->with('user_update_message', 'Dane użytkownika zostały pomyślnie zapisane!');
     }
 
     /**
@@ -91,7 +115,7 @@ class UserController extends Controller
         $user->data_urodzenia = $request->data_urodzenia;
         $user->save();
 
-        return redirect()->route('/dane_uzytkownika')->with('user_update_message', 'Dane użytkownika zostały pomyślnie edytowane!');
+        return view('pages.dane_uzytkownika')->with('user_update_message', 'Dane użytkownika zostały pomyślnie edytowane!');
 //        $user = Auth::user();
 //        $user->imie = $request->input('imie');
 //        $user->nazwisko = $request->input('nazwisko');

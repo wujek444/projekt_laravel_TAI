@@ -41,7 +41,9 @@ Route::get('/logout', function(){
 Route::group(['middleware' => ['web']], function(){
    Route::resource('blog', 'BlogController');
     Route::resource('library', 'LibraryController');
+    Route::resource('zmiana_danych_uzytkownika', 'UserController');
 });
+Route::get('/zmiana_danych_uzytkownika', 'UserController@zmiana_danych_uzytkownika');
 
 
 Auth::routes();

@@ -7,7 +7,7 @@
             <div class="col-md-8">
 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" action="{{route('UserController@update',$user()->id)}}" method="POST" >
+                    <form class="form-horizontal" role="form" action="{{route('zmiana_danych_uzytkownika.update',Auth::user()->id)}}" method="POST" >
                         <input name="_method" type="hidden" value="PATCH">
 
                         {{ csrf_field() }}
@@ -16,7 +16,7 @@
                             <label for="imie" class="col-md-4 control-label">Imię</label>
 
                             <div class="col-md-6">
-                                <input id="imie" type="text" placeholder="Imię" class="form-control" name="imie" value="{{ $user->imie }}" required autofocus>
+                                <input id="imie" type="text" placeholder="Imię" class="form-control" name="imie" value="{{ Auth::user()->imie }}" required autofocus>
 
                                 @if ($errors->has('imie'))
                                     <span class="help-block">
@@ -30,7 +30,7 @@
                             <label for="nazwisko" class="col-md-4 control-label">Nazwisko</label>
 
                             <div class="col-md-6">
-                                <input id="nazwisko" type="text" placeholder="Nazwisko" class="form-control" name="nazwisko" value="{{ $user->nazwisko }}" required autofocus>
+                                <input id="nazwisko" type="text" placeholder="Nazwisko" class="form-control" name="nazwisko" value="{{ Auth::user()->nazwisko }}" required autofocus>
 
                                 @if ($errors->has('nazwisko'))
                                     <span class="help-block">
@@ -44,7 +44,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" placeholder="adres@domena.pl" class="form-control" name="email" value="{{ $user->email }}" required>
+                                <input id="email" type="email" placeholder="adres@domena.pl" class="form-control" name="email" value="{{ Auth::user()->email }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -58,7 +58,7 @@
                             <label for="imie" class="col-md-4 control-label">Nr telefonu</label>
 
                             <div class="col-md-6">
-                                <input id="telefon" type="text" placeholder="999999999" class="form-control" name="telefon" value="{{ $user->telefon }}" required autofocus>
+                                <input id="telefon" type="text" placeholder="999999999" class="form-control" name="telefon" value="{{ Auth::user()->telefon }}" required autofocus>
 
                                 @if ($errors->has('telefon'))
                                     <span class="help-block">
@@ -73,7 +73,7 @@
                             <label for="login" class="col-md-4 control-label">Nazwa użytkownika    <br/> (podawane przy logowaniu)</label>
 
                             <div class="col-md-6">
-                                <input id="login" type="text" class="form-control" placeholder="Login" name="login" value="{{ $user->login }}" required autofocus>
+                                <input id="login" type="text" class="form-control" placeholder="Login" name="login" value="{{ Auth::user()->login }}" required autofocus>
 
                                 @if ($errors->has('login'))
                                     <span class="help-block">
@@ -87,7 +87,7 @@
                             <label for="data_urodzenia" class="col-md-4 control-label">Data urodzenia</label>
 
                             <div class="col-md-6">
-                                <input id="data_urodzenia" type="date" class="form-control" name="data_urodzenia" value="{{ $user->data_urodzenia }}" required autofocus>
+                                <input id="data_urodzenia" type="date" class="form-control" name="data_urodzenia" value="{{ Auth::user()->data_urodzenia }}" required autofocus>
 
                                 @if ($errors->has('data_urodzenia'))
                                     <span class="help-block">
@@ -96,34 +96,13 @@
                                 @endif
                             </div>
                         </div>
-
-                        {{--<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">--}}
-                            {{--<label for="password" class="col-md-4 control-label">Hasło</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                                {{--<input id="password" type="password" class="form-control" name="password" required>--}}
-
-                                {{--@if ($errors->has('password'))--}}
-                                    {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('password') }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@endif--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group">--}}
-                            {{--<label for="password-confirm" class="col-md-4 control-label">Potwierdź hasło</label>--}}
-
-                            {{--<div class="col-md-6">--}}
-                                {{--<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary" style="width: 100%">
+                                <button type="submit" class="btn btn-primary" style="width: 50%">
                                     Zatwierdź
                                 </button>
+                                <a href="/dane_uzytkownika" class="btn btn-success">Powrót</a>
+
                                 {{--<a href="/user_update" class="btn btn-info" role="button">Zatwierdź</a>--}}
                             </div>
                         </div>
