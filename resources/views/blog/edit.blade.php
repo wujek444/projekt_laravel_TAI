@@ -30,6 +30,7 @@
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Zapisz">
+                        <a href="{{route('blog.index')}}" class="btn btn-success">Powrót</a>
                     </div>
 
                 </form>

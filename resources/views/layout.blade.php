@@ -52,6 +52,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li <?php if ($_SERVER['REQUEST_URI']=='/index') echo 'class="active"'; ?>><a href="{{ action('PagesController@index') }}">Strona główna</a></li>
+                <li <?php if ($_SERVER['REQUEST_URI']=='/library') echo 'class="active"'; ?>><a href="{{ action('LibraryController@index') }}">Biblioteka gier</a></li>
                 <li <?php if ($_SERVER['REQUEST_URI']=='/blog') echo 'class="active"'; ?>><a href="{{ action('BlogController@index') }}">News-blog</a></li>
                 <li <?php if ($_SERVER['REQUEST_URI']=='/wypozycz') echo 'class="active"'; ?>><a href="{{ action('PagesController@wypozycz') }}">Wypożycz grę!</a></li>
                 <li <?php if ($_SERVER['REQUEST_URI']=='/regulamin') echo 'class="active"'; ?>><a href="{{ action('PagesController@regulamin') }}">Regulamin</a></li>

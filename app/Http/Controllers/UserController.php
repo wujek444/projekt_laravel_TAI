@@ -56,9 +56,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()//id
+    public function edit($id)
     {
-
+        $user = User::findOrFail($id);
+        //return to the edit view
+        return view('pages.zmiana_danych_uzytkownika',compact('user'));
     }
 
     /**
@@ -76,15 +78,17 @@ class UserController extends Controller
             'nazwisko' => 'required',
             'email' => 'required',
             'telefon' => 'required',
+            'login' => 'required',
             'data_urodzenia' => 'required',
         ]);
 
         $user = User::findOrFail($id);
-        $user->imie = $request->input('imie');
-        $user->nazwisko = $request->input('nazwisko');
-        $user->email = $request->input('email');
-        $user->telefon = $request->input('telefon');
-        $user->data_urodzenia = $request->input('data_urodzenia');
+        $user->imie = $request->imie;
+        $user->nazwisko = $request->nazwisko;
+        $user->email = $request->email;
+        $user->telefon = $request->telefon;
+        $user->login = $request->login;
+        $user->data_urodzenia = $request->data_urodzenia;
         $user->save();
 
         return redirect()->route('/dane_uzytkownika')->with('user_update_message', 'Dane użytkownika zostały pomyślnie edytowane!');

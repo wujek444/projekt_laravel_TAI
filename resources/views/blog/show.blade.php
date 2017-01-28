@@ -10,6 +10,7 @@
         </div>
         <div class="row">
             {{$blog->post_content}} {{-- tutaj będzie treść, ale jest opis dla przetestowania--}}
-        </div>
+        </div><br/><br/><br/>
+        <a href="{{route('blog.index')}}" class="btn btn-success">Powrót</a>
     </div>
 @stop
