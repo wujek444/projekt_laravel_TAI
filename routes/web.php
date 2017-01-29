@@ -18,19 +18,16 @@ Route::group([
     'middleware' => 'roles',
     'roles' => ['Admin', 'User']//do tej grupy dostęp mają admin i user
 ], function(){
-    Route::get('/wypozycz', 'PagesController@wypozycz');
     Route::get('/dane_uzytkownika', 'PagesController@dane_uzytkownika');
-    Route::get('/zmiana_danych_uzytkownika', 'PagesController@zmiana_danych_uzytkownika');
+//    Route::get('/zmiana_danych_uzytkownika', 'PagesController@zmiana_danych_uzytkownika');
     Route::get('/user_update', 'UserController@update');
+
 });
 
 Route::get('/index', 'PagesController@index');
 Route::get('/regulamin', 'PagesController@regulamin');
 Route::get('/galeria', 'PagesController@galeria');
-//Route::post('/login', function (){
-//    Auth::login();
-//    return Redirect::to('/wypozycz')->with('login_message', 'Zostałeś zalogowany!');
-//});
+
 Route::get('/logout', function(){
     Auth::logout();
     //return view('index')->with('message', 'Zostałeś wylogowany!');
@@ -39,13 +36,15 @@ Route::get('/logout', function(){
 
 
 Route::group(['middleware' => ['web']], function(){
-   Route::resource('blog', 'BlogController');
+    Route::resource('blog', 'BlogController');
     Route::resource('library', 'LibraryController');
+    Route::resource('messages', 'MessageController');
     Route::resource('zmiana_danych_uzytkownika', 'UserController');
 });
 Route::get('/zmiana_danych_uzytkownika', 'UserController@zmiana_danych_uzytkownika');
 
 
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');

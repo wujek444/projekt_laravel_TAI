@@ -54,10 +54,9 @@
                 <li <?php if ($_SERVER['REQUEST_URI']=='/index') echo 'class="active"'; ?>><a href="{{ action('PagesController@index') }}">Strona główna</a></li>
                 <li <?php if ($_SERVER['REQUEST_URI']=='/library') echo 'class="active"'; ?>><a href="{{ action('LibraryController@index') }}">Biblioteka gier</a></li>
                 <li <?php if ($_SERVER['REQUEST_URI']=='/blog') echo 'class="active"'; ?>><a href="{{ action('BlogController@index') }}">News-blog</a></li>
-                <li <?php if ($_SERVER['REQUEST_URI']=='/wypozycz') echo 'class="active"'; ?>><a href="{{ action('PagesController@wypozycz') }}">Wypożycz grę!</a></li>
                 <li <?php if ($_SERVER['REQUEST_URI']=='/regulamin') echo 'class="active"'; ?>><a href="{{ action('PagesController@regulamin') }}">Regulamin</a></li>
                 <li <?php if ($_SERVER['REQUEST_URI']=='/galeria') echo 'class="active"'; ?>><a href="{{ action('PagesController@galeria') }}">Galeria</a></li>
-                <li><a href="#contact" data-toggle="modal">Kontakt</a></li>
+                {{--<li><a href="#contact" data-toggle="modal">Kontakt</a></li>--}}
                 @if(Auth::guest())<!-- jeżeli niezalogowany użytkownik odwiedza stronę-->
                 <li <?php if ($_SERVER['REQUEST_URI']=='/register') echo 'class="active"'; ?>><a href="{{ action('Auth\RegisterController@register') }}">Zarejestruj się</a></li>
                 <li <?php if ($_SERVER['REQUEST_URI']=='/login') echo 'class="active"'; ?>><a href="{{ action('Auth\LoginController@login') }}">Zaloguj się</a></li>
@@ -84,7 +83,7 @@
 <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container">
         <div class="navbar-text pull-left">
-            <p>© 2016 Jakub Wójcik</p>
+            <p>© 2017 Jakub Wójcik</p>
         </div>
         <div class="navbar-text pull-right">
             <a href="https://www.facebook.com/"><i class="fa fa-facebook-square fa-2x"></i></a>
@@ -97,7 +96,9 @@
 <div class="modal fade" id="contact" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class="form-horizontal" role="form" action="mailto:wujek444@gmail.com" method="post">
+            <form class="form-horizontal" role="form" action="{{route('messages.store')}}" method="post">
+                <input name="_method" type="hidden" value="PATCH">
+                {{csrf_field()}}
                 <div class="modal-header">
                     <h4>Kontakt:</h4>
                 </div>
@@ -106,30 +107,30 @@
                         <label for="kontakt-imieNazwisko" class="col-sm-2 control-label">Imię i nazwisko:</label>
                         <div class="col-sm-10">
                             @if(Auth::guest())
-                            <input type="text" class="form-control" id="kontakt-imieNazwisko" placeholder="Imię i nazwisko"
-                                   pattern="[A-Za-ząęśżźćóńł]{2,10} [A-Za-ząęśżźćóńł]{2,20}" required title="Wprowadź wiadomość w prawidłowym formacie(Imię Nazwisko). Można używać jedynie liter!">
+                                <input type="text" class="form-control" name="kontakt_imieNazwisko" id="kontakt-imieNazwisko" placeholder="Imię i nazwisko"
+                                       pattern="[A-Za-ząęśżźćóńł]{2,10} [A-Za-ząęśżźćóńł]{2,20}" required title="Wprowadź wiadomość w prawidłowym formacie(Imię Nazwisko). Można używać jedynie liter!">
                             @endif
                             @if(Auth::user())
-                                   <?php echo '<input type="text" value="'.Auth::user()->imie.' '.Auth::user()->nazwisko.'" disabled class="form-control" id="kontakt-imieNazwisko" placeholder="Imię i nazwisko"
+                                <?php echo '<input type="text" value="'.Auth::user()->imie.' '.Auth::user()->nazwisko.'" disabled class="form-control" name="kontakt_imieNazwisko" id="kontakt-imieNazwisko" placeholder="Imię i nazwisko"
                                            pattern="[A-Za-ząęśżźćóńł]{2,10} [A-Za-ząęśżźćóńł]{2,20}" required title="Wprowadź wiadomość w prawidłowym formacie(Imię Nazwisko). Można używać jedynie liter!">'?>
-                                @endif
+                            @endif
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="kontakt-email" class="col-sm-2 control-label">Email:</label>
                         <div class="col-sm-10">
                             @if(Auth::guest())
-                            <input type="email" class="form-control" id="kontakt-email" placeholder="adres@domena.com">
-                                @endif
+                                <input type="email" class="form-control" name="kontakt_email" id="kontakt-email" placeholder="adres@domena.com">
+                            @endif
                             @if(Auth::user())
-                                <?php echo '<input type="email" value="'.Auth::user()->email.'" disabled class="form-control" id="kontakt-email" placeholder="adres@domena.com">'?>
-                                @endif
+                                <?php echo '<input type="email" value="'.Auth::user()->email.'" disabled class="form-control" name="kontakt_email" id="kontakt-email" placeholder="adres@domena.com">'?>
+                            @endif
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="kontakt-wiadomosc" class="col-sm-2 control-label">Wiadomość:</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="kontakt-wiadomosc" rows="4" placeholder="Twoja wiadomość..."></textarea>
+                            <textarea class="form-control"  name="kontakt_wiadomosc" id="kontakt-wiadomosc" rows="4" placeholder="Twoja wiadomość..."></textarea>
                         </div>
                     </div>
                 </div>

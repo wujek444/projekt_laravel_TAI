@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Roles;
 
 class RegisterController extends Controller
 {
@@ -55,6 +56,8 @@ class RegisterController extends Controller
             'login' => 'required|max:20',
             'data_urodzenia' => 'required',
             'password' => 'required|min:6|confirmed',
+
+
         ]);
     }
 
@@ -66,7 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+         $user =  User::create([
             'imie' => $data['imie'],
             'nazwisko' => $data['nazwisko'],
             'email' => $data['email'],
@@ -74,6 +77,10 @@ class RegisterController extends Controller
             'login' => $data['login'],
             'data_urodzenia' => $data['data_urodzenia'],
             'password' => bcrypt($data['password']),
+
         ]);
+        $user->roles()->attach(2);//standard user
+        return $user;
+
     }
 }

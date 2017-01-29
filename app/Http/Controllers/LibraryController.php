@@ -12,6 +12,12 @@ class LibraryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct() //dostęp mają jedynie zalogowani użytkownicy
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
         //show data
@@ -139,4 +145,6 @@ class LibraryController extends Controller
         $game->delete();
         return redirect()->route('library.index')->with('alert-success','Dane gry zostały pomyślnie usunięte!');
     }
+
+
 }

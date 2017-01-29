@@ -23,9 +23,9 @@
                     <th>Dostępność</th>
                     <th>Działania</th>
                 </tr>
-
+                @if(Auth::user()->hasRole('Admin'))
                 <a href="{{route('library.create')}}" class="btn btn-info pull-right" style="width: 20%">Dodaj nową grę</a><br/><br/>
-
+                @endif
 
                 @foreach($games as $game)
                     <tr>
@@ -41,8 +41,10 @@
                                 <input type="hidden" name="_method" value="delete">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <a href="{{route('library.show', $game->id)}}" class="btn btn-success">Wyświetl</a>
+                                @if(Auth::user()->hasRole('Admin'))
                                 <a href="{{route('library.edit', $game->id)}}" class="btn btn-primary">Edytuj</a>
                                 <input type="submit" class="btn btn-danger" onclick="return confirm('Czy na pewno chcesz usunąć tą grę?')" name="name" value="Usuń">
+                                    @endif
                             </form>
                         </td>
                     </tr>

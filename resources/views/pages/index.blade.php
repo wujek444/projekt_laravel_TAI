@@ -6,7 +6,7 @@
                 <h1 class="indexJumboH1">ANALOGOWE GRANIE</h1>
                 <p class="indexJumboP">Twoja wypożyczalnia gier planszowych.</p>
                 <div class="jumboBtn">
-                    <a href="{{ action('PagesController@wypozycz') }}" class="btn btn-danger">Wypożycz już teraz!</a>
+                    <a href="{{ action('LibraryController@index') }}" class="btn btn-danger">Zobacz dostępne gry!</a>
                 </div>
             </div>
         </div>
@@ -29,24 +29,24 @@
 
         <div class="row">
             <div class="col-sm-4"> <!--4/12 cols on the grid -->
-                <a href="#contact" data-toggle="modal" class="thumbnail home-thumb">
+                <a href="/register" data-toggle="modal" class="thumbnail home-thumb">
                     <img src="img/Wypozycz.jpg" class="img-responsive" alt="Wypożycz grę!">
                 </a>
                 <h3>O nas:</h3>
                 <p>Analogowe Granie to mała firma oferująca wypożyczanie gier planszowych
                     za niewielką opłatą na okres do tygodnia. Oferujemy nasze usługi dla osób
                     prywatnych oraz dla firm (np. na integracje firmowe).</p>
-                <a href="#contact" data-toggle="modal" class="btn btn-danger">Napisz do nas!</a>
+                <a href="/register" data-toggle="modal" class="btn btn-danger">Zarejestruj się!</a>
             </div>
             <div class="col-sm-4"> <!--4/12 cols on the grid -->
-                <a href="{{ action('PagesController@wypozycz') }}" class="thumbnail home-thumb">
+                <a href="{{ action('LibraryController@index') }}" class="thumbnail home-thumb">
                     <img src="img/gry.jpg" alt="Wypożycz!">
                 </a>
                 <h3>Wypożyczaj gry!</h3>
                 <p>Wybieraj spomiędzy wielu znanych i lubianych tytułów, zarówno dla
                     początkujących i weteranów gier planszowych, dla młodych i starych.
                     Zwolennicy różnych gatunków planszówek na pewno znajdą u nas coś dla siebie!</p>
-                <a href="{{ action('PagesController@wypozycz') }}" class="btn btn-danger">Wypożycz!</a>
+                <a href="{{ action('LibraryController@index') }}" class="btn btn-danger">Zobacz bibliotekę!</a>
             </div>
             <div class="col-sm-4"> <!--4/12 cols on the grid -->
                 <a href="{{ action('PagesController@galeria') }}" class="thumbnail home-thumb">
