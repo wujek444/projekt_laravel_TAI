@@ -72,7 +72,7 @@
 
 
                         <div class="form-group{{ $errors->has('login') ? ' has-error' : '' }}">
-                            <label for="login" class="col-md-4 control-label">Nazwa użytkownika    <br/> (podawane przy logowaniu)</label>
+                            <label for="login" class="col-md-4 control-label">Nazwa użytkownika</label>
 
                             <div class="col-md-6">
                                 <input id="login" type="text" class="form-control" placeholder="Login" name="login" value="{{ old('login') }}" required autofocus>
